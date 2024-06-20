@@ -28,7 +28,7 @@ body{
   justify-content: space-between;
   transition: top 0.3s;
   z-index: 1;
-  border-radius: 5px;
+  
 }
 
 .buttons {
@@ -141,6 +141,7 @@ body{
 }
 
 .list-items {
+  list-style: none;
   display: flex;
   overflow-x: auto;
   white-space: nowrap;
@@ -155,7 +156,8 @@ body{
 }
 
 .list-items li {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   margin-right: 1em;
   transition: transform 1s ease;
   color: #fff; 
@@ -164,9 +166,31 @@ body{
 .list-items li:hover {
   transform: scale(1.1);
 }
+.hover-details {
+  background: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background to ensure text readability */
+  padding: 10px;
+  border-radius: 8px;
+}
 
 .list-items img {
   width: 100px;
   height: auto;
   display: block;
+}
+
+.list-items .text-content {
+  flex: 1;
+}
+
+.list-items .text-content h5 {
+  margin: 0 0 10px;
+}
+
+.list-items .text-content p {
+  margin: 5px 0;
+}
+
+.logoimg{
+  width: 100px;
+  height: 84px;
 }

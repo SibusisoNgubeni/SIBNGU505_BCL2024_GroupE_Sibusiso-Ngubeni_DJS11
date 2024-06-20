@@ -8,8 +8,8 @@ function App() {
   
   return (
     <>
-     <Navbar/>
-     <FetchRequest/>
+    <Navbar/>
+    <FetchRequest/>
     </>
   )
 }

@@ -9,7 +9,7 @@ export default function Navbar() {
     <div className="Navbar">
       
         <div>
-          <h1>Bad Podcast</h1>
+          <img className="logoimg"src="./src/assets/images/badpodcast-darkbg.png"/>
         </div>
       
       

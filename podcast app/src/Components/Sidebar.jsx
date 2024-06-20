@@ -5,11 +5,16 @@ import '../index.css'
 export default function Sidebar() {
   
 
+
+
   return (
-    <div
-    className='sidebar'
-  >
+    <div className='sidebar'>
+    <div>
+      
     <h2>Genres</h2>
+    </div>
+    
+   
     <ul>
       <li>Comedy</li>
       <li>Technology</li>

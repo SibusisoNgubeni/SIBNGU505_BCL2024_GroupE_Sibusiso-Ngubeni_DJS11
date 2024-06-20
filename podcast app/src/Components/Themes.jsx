@@ -5,12 +5,14 @@ const colors = {
     background: '#f0f0f0',
     navbar: '#c4d0cf',
     modal: '#ffffff', 
+    logo: "./Assets/images/badpodcast-darkbg.png"
     
   },
   night: {
     background: '#333',
     navbar: '#546362',
     modal: '#444444', 
+    logo: "./Assets/images/badpodcast-lightbg.png"
   },
 };
 
@@ -30,11 +32,13 @@ document.documentElement.style.setProperty('--modal-color', colors[initialTheme]
 
 export default function Themes() {
   const [theme, setTheme] = useState(initialTheme);
+  const [logo, setLogo] = useState(colors[initialTheme].logo);
 
   const updateColors = (newTheme) => {
     document.documentElement.style.setProperty('--background-color', colors[newTheme].background);
     document.documentElement.style.setProperty('--navbar-color', colors[newTheme].navbar);
     document.documentElement.style.setProperty('--modal-color', colors[newTheme].modal);
+    setLogo(colors[newTheme].logo);
   };
 
   const handleThemeChange = (newTheme) => {
@@ -61,7 +65,9 @@ export default function Themes() {
       <select value={theme} onChange={(e) => handleThemeChange(e.target.value)}>
         <option value="day">Day</option>
         <option value="night">Night</option>
+       
       </select>
+      <img src={logo} alt="Logo" style={{ height: '50px' }} />
     </div>
   );
 }

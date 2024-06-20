@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './Navbar';
 import "../index.css";
 import Sidebar from './Sidebar';
 import genreMapping from '../Helpers/GenreMapping';
+import TruncateText from '../Helpers/TruncateText'; // Ensure this component exists and is imported correctly
 
 export default function FetchRequest() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [hoveredItem, setHoveredItem] = useState(null);
-  
+
   useEffect(() => {
     fetch('https://podcast-api.netlify.app')
       .then(response => {
@@ -30,23 +30,31 @@ export default function FetchRequest() {
 
   return (
     <div className="container">
-      <Navbar />
       <Sidebar />
       <div className="main-content">
         {loading && <p>Loading...</p>}
         {error && <p style={{ color: 'red' }}>{error}</p>}
-        {!error && data && (
+        {!error && data.length > 0 && (
           <>
             <div className="preview-background" style={{ backgroundImage: hoveredItem ? `url(${hoveredItem.image})` : 'none' }}>
+              {hoveredItem && (
+                <div className="hover-details">
+                  <h5>{hoveredItem.title}</h5>
+                  <TruncateText text={hoveredItem.description} maxLength={250} />
+                  <p>Seasons: {hoveredItem.seasons}</p>
+                  <p>{hoveredItem.genres.map(genreId => genreMapping[genreId]).join(', ')}</p>
+                  <p>Last Updated: {new Date(hoveredItem.updated).toLocaleDateString()}</p>
+                </div>
+              )}
             </div>
             <div className="list-items">
               <ul>
                 {data.map(post => (
                   <li key={post.id} onMouseEnter={() => setHoveredItem(post)} onMouseLeave={() => setHoveredItem(null)}>
-                    <h5>{post.title}</h5>
-                    <p>{post.body}</p>
                     {post.image && <img src={post.image} alt={post.title} />}
-                    <p>Genre: {genreMapping[post.genre_id]}</p> 
+                    <div className="text-content">
+                      <h5>{post.title}</h5>
+                    </div>
                   </li>
                 ))}
               </ul>
