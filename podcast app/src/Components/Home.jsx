@@ -3,6 +3,7 @@ import "../index.css";
 import Sidebar from './Sidebar';
 import genreMapping from '../Helpers/GenreMapping';
 import TruncateText from '../Helpers/TruncateText';
+import Navbar from './Navbar';
 
 export default function FetchRequest() {
   const [data, setData] = useState([]);
@@ -10,6 +11,7 @@ export default function FetchRequest() {
   const [loading, setLoading] = useState(true);
   const [hoveredItem, setHoveredItem] = useState(null);
   const [selectedGenre, setSelectedGenre] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     fetch('https://podcast-api.netlify.app')
@@ -39,40 +41,23 @@ export default function FetchRequest() {
     setHoveredItem(post);
   };
 
- 
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
 
-  const filteredData = selectedGenre
-    ? data.filter(post => post.genres.some(genreId => genreMapping[genreId] === selectedGenre))
-    : data;
+  const filteredData = data.filter(post => {
+    const matchesGenre = selectedGenre ? post.genres.some(genreId => genreMapping[genreId] === selectedGenre) : true;
+    const matchesSearch = searchQuery ? post.title.toLowerCase().includes(searchQuery.toLowerCase()) : true;
+    return matchesGenre && matchesSearch;
+  });
 
   const uniqueGenres = [
     ...new Set(data.flatMap(post => post.genres.map(genreId => genreMapping[genreId])))
   ];
 
-  // Dummy data for "My List" (played shows)
-  const myList = [
-    {
-      id: 1,
-      title: 'Played Show 1',
-      image: 'https://example.com/played-show-1.jpg',
-      description: 'Description of Played Show 1...',
-      seasons: 2,
-      genres: ['comedy', 'fiction'],
-      updated: '2024-06-20'
-    },
-    {
-      id: 2,
-      title: 'Played Show 2',
-      image: 'https://example.com/played-show-2.jpg',
-      description: 'Description of Played Show 2...',
-      seasons: 1,
-      genres: ['news'],
-      updated: '2024-06-19'
-    }
-  ];
-
   return (
     <div className="container">
+      <Navbar onSearch={handleSearch} />
       <Sidebar genres={uniqueGenres} onGenreSelect={handleGenreSelect} />
       <div className="main-content">
         {loading && <p className='loading-sts'></p>}
