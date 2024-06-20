@@ -1,0 +1,172 @@
+
+body{
+  background-color: var(--background-color);
+}
+
+::-webkit-scrollbar {
+  margin-top: 100px;
+  width: 10px;
+  border-radius: 10px;
+  background-color: rgb(70, 66, 66);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgb(185, 100, 100);
+}
+
+
+.Navbar {
+  width: 100%;
+  height: 80px;
+  background-color: var(--navbar-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: top 0.3s;
+  z-index: 1;
+  border-radius: 5px;
+}
+
+.buttons {
+  margin-left: auto;
+}
+
+.modal-btn {
+  margin-top: 40px;
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: 20px;
+  background-color: rgb(228, 228, 242);
+  border-radius: 6px;
+}
+
+.modal {
+  position: absolute;
+  top: 15%;
+  right: 10px;
+  background-color: var(--modal-color);
+  padding: 20px;
+  border: 1px solid #888;
+  width: 250px;
+  height: 500px;
+  border-radius: 20px;
+}
+
+.modal-footer {
+  padding: 10px;
+  border-top: 1px solid #8e8a8a;
+  text-align: center;
+  margin-top: auto;
+}
+
+/* Home.css */
+
+.container {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+}
+
+.sidebar {
+  margin-top:100px ;
+  width: 50px; /* Minimal width when not hovered */
+  background-color: #111; /* Dark background for the sidebar */
+  color: #fff; /* White text for better visibility */
+  padding: 20px 5px; /* Adjust padding to fit minimal width */
+  box-sizing: border-box;
+  position: fixed; /* Fix the sidebar to the left */
+  top: 0;
+  bottom: 0;
+  overflow-y: auto; /* Allow scrolling within the sidebar if content is long */
+  transition: width 1s; /* Smooth transition for width */
+}
+
+.sidebar:hover {
+  width: 250px; /* Full width on hover */
+  padding: 20px; /* Full padding on hover */
+}
+
+.sidebar h2 {
+  display: none; /* Hide headings when not hovered */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  display: none; /* Hide list items when not hovered */
+}
+
+.sidebar:hover h2,
+.sidebar:hover ul {
+  display: block; /* Show headings and list items on hover */
+}
+
+.sidebar li {
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.sidebar li:hover {
+  text-decoration: underline;
+}
+
+
+.main-content {
+  margin-top: 50px;
+  margin-left: 50px; /* Minimal margin-left to fit the minimal sidebar */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Allow scrolling within the main content */
+  height: 100vh; /* Full viewport height */
+  transition: margin-left 1s; /* Smooth transition for margin-left */
+}
+
+.sidebar:hover ~ .main-content {
+  margin-left: 250px; /* Full margin-left to fit the expanded sidebar */
+}
+
+.preview-background {
+  width: 100%;
+  height: 400px; /* Adjust the height as needed */
+  background-size: contain; /* Show the full content of the image */
+  background-repeat: no-repeat; /* Prevent repeating the image */
+  background-position: center;
+  transition: background-image 1s ease;
+  margin-top: 50px;
+  margin-bottom: 10px; /* Space between the preview and the list */
+}
+
+.list-items {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5); 
+}
+
+.list-items ul {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.list-items li {
+  display: inline-block;
+  margin-right: 1em;
+  transition: transform 1s ease;
+  color: #fff; 
+}
+
+.list-items li:hover {
+  transform: scale(1.1);
+}
+
+.list-items img {
+  width: 100px;
+  height: auto;
+  display: block;
+}
