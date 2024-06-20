@@ -10,7 +10,7 @@ const colors = {
   },
   night: {
     background: '#333',
-    navbar: '#546362',
+    navbar: '#3e3d3d',
     modal: '#444444', 
     logo: "./Assets/images/badpodcast-lightbg.png"
   },

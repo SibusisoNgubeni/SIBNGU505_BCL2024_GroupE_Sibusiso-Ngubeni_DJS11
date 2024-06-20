@@ -1,0 +1,23 @@
+/* ScrollArrows.css */
+.scroll-arrows {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 2; /* Ensure the arrows are above the list */
+  }
+  
+  .scroll-arrows button {
+    background-color: transparent;
+    border: none;
+    font-size: 24px; 
+    cursor: pointer;
+    outline: none; /
+  }
+  
+  .scroll-arrows button:hover {
+    color: #555; 
+  }
+  

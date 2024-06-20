@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import "../index.css";
 import Sidebar from './Sidebar';
 import genreMapping from '../Helpers/GenreMapping';
-import TruncateText from '../Helpers/TruncateText'; // Ensure this component exists and is imported correctly
+import TruncateText from '../Helpers/TruncateText';
+import ScrollArrows from './ScrollArrow';
 
 export default function FetchRequest() {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [hoveredItem, setHoveredItem] = useState(null);
+
+  const listRef = useRef(null);
 
   useEffect(() => {
     fetch('https://podcast-api.netlify.app')
@@ -27,6 +30,24 @@ export default function FetchRequest() {
         setLoading(false);
       });
   }, []);
+
+  const scrollLeft = () => {
+    if (listRef.current) {
+      listRef.current.scrollBy({
+        left: -200, // Adjust as needed based on the scroll distance
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (listRef.current) {
+      listRef.current.scrollBy({
+        left: 200, // Adjust as needed based on the scroll distance
+        behavior: 'smooth',
+      });
+    }
+  };
 
   return (
     <div className="container">
@@ -48,7 +69,8 @@ export default function FetchRequest() {
               )}
             </div>
             <div className="list-items">
-              <ul>
+            <ScrollArrows scrollLeft={scrollLeft} scrollRight={scrollRight} /> {/* Use the ScrollArrows component */}
+              <ul ref={listRef}>
                 {data.map(post => (
                   <li key={post.id} onMouseEnter={() => setHoveredItem(post)} onMouseLeave={() => setHoveredItem(null)}>
                     {post.image && <img src={post.image} alt={post.title} />}

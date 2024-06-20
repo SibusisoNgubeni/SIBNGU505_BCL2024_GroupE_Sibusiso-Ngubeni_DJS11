@@ -16,11 +16,16 @@ export default function Sidebar() {
     
    
     <ul>
+      <li>Business</li>
       <li>Comedy</li>
-      <li>Technology</li>
-      <li>Sports</li>
+      <li>Entertainment</li>
+      <li>Fiction</li>
+      <li>History</li>
+      <li>Investigative Journalism</li>
+      <li>Kids And Family</li>
       <li>News</li>
-      <li>Music</li>
+      <li>Personal Growth</li>
+
     </ul>
     <h2>New Podcasts</h2>
     <ul>
