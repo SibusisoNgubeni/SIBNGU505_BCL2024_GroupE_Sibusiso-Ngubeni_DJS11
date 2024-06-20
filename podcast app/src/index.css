@@ -31,6 +31,10 @@ body{
   
 }
 
+.search-bar {
+  position: relative;
+}
+
 .search-bar input {
   width: 300px;
   margin-left: 50px;
@@ -38,6 +42,34 @@ body{
   border-radius: 4px;
   border: 1px solid #ccc;
 }
+
+
+.suggestions {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.suggestions li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestions li:hover {
+  background-color: #f0f0f0;
+}
+
+
 
 .buttons {
   margin-left: auto;
@@ -166,6 +198,7 @@ body{
   transition: background-image 1s ease;
   margin-top: 50px;
   margin-bottom: 10px; 
+  margin-left: -25%;
 }
 
 .list-items {
@@ -204,9 +237,15 @@ body{
   transform: scale(1.1);
 }
 .hover-details {
+  margin-left: 70%;
   background: rgba(0, 0, 0, 0.5); 
   padding: 10px;
   border-radius: 8px;
+}
+
+.hover-img{
+  position: relative;
+  margin-left: 20%;
 }
 
 .list-items img {

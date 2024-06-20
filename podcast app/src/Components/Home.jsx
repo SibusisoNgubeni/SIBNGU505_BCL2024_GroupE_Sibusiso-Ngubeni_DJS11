@@ -57,7 +57,7 @@ export default function FetchRequest() {
 
   return (
     <div className="container">
-      <Navbar onSearch={handleSearch} />
+      <Navbar podcasts={data} onSearch={handleSearch} />
       <Sidebar genres={uniqueGenres} onGenreSelect={handleGenreSelect} />
       <div className="main-content">
         {loading && <p className='loading-sts'></p>}
@@ -68,7 +68,7 @@ export default function FetchRequest() {
             <div className="preview-background" style={{ backgroundImage: hoveredItem ? `url(${hoveredItem.image})` : 'none' }}>
               {hoveredItem && (
                 <div className="hover-details">
-                  <h5>{hoveredItem.title}</h5>
+                  <h4>{hoveredItem.title}</h4>
                   <TruncateText text={hoveredItem.description} maxLength={250} />
                   <p>Seasons: {hoveredItem.seasons}</p>
                   <p>{hoveredItem.genres.map(genreId => genreMapping[genreId]).join(', ')}</p>
@@ -92,6 +92,9 @@ export default function FetchRequest() {
               </ul>
             </div>
           </>
+        )}
+        {!error && filteredData.length === 0 && !loading && (
+          <div className="no-results">No results found</div>
         )}
       </div>
     </div>
