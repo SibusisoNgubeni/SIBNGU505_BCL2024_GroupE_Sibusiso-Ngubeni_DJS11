@@ -12,7 +12,7 @@ body{
 
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: #3e3d3d;
+  background-color: #3a3a3a;
 }
 
 
@@ -115,6 +115,7 @@ body{
 
 
 .main-content {
+  max-width: 100%;
   margin-top: 50px;
   margin-left: 50px; /* Minimal margin-left to fit the minimal sidebar */
   flex: 1;
@@ -123,6 +124,25 @@ body{
   overflow-y: auto; /* Allow scrolling within the main content */
   height: 100vh; /* Full viewport height */
   transition: margin-left 1s; /* Smooth transition for margin-left */
+}
+
+.loading-sts{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5rem;
+  height: 5rem;
+  border: 0.6rem solid #e1a3a3;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  margin: 0 auto;
+  animation: loader 2500ms linear infinite;
+}
+
+@keyframes loader {
+  to {
+      transform: rotate(360deg);
+  }
 }
 
 .sidebar:hover ~ .main-content {
@@ -137,7 +157,7 @@ body{
   background-position: center;
   transition: background-image 1s ease;
   margin-top: 50px;
-  margin-bottom: 10px; /* Space between the preview and the list */
+  margin-bottom: 10px; 
 }
 
 .list-items {
@@ -146,7 +166,16 @@ body{
   overflow-x: auto;
   white-space: nowrap;
   padding: 20px;
-  background: #333; 
+  background: #ae3535; 
+}
+.list-items h2{
+  font-size: 1.5rem;
+  margin-top: 0px;
+  margin-bottom: auto;
+  margin-right: 10px;
+  color: #fff;
+
+
 }
 
 .list-items ul {
@@ -167,7 +196,7 @@ body{
   transform: scale(1.1);
 }
 .hover-details {
-  background: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background to ensure text readability */
+  background: rgba(0, 0, 0, 0.5); 
   padding: 10px;
   border-radius: 8px;
 }
