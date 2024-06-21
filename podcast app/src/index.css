@@ -1,6 +1,25 @@
 
-body{
+:root {
+  --background-color: #f0f0f0;
+  --navbar-color: #c4d0cf;
+  --modal-color: #ffffff;
+  --hoverDetails-color: rgba(0, 0, 0, 0.5);
+}
+
+body {
   background-color: var(--background-color);
+}
+
+.navbar {
+  background-color: var(--navbar-color);
+}
+
+.modal {
+  background-color: var(--modal-color);
+}
+
+.hover-details {
+  background-color: var(--hoverDetails-color);
 }
 
 ::-webkit-scrollbar {
@@ -19,7 +38,6 @@ body{
 .Navbar {
   width: 100%;
   height: 80px;
-  background-color: var(--navbar-color);
   position: fixed;
   top: 0;
   left: 0;
@@ -33,40 +51,52 @@ body{
 
 .search-bar {
   position: relative;
+ 
+}
+
+.clear-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.7em;
+  position: relative;
+  right: 20px;
 }
 
 .search-bar input {
-  width: 300px;
-  margin-left: 50px;
+  width: 400px;
+  margin-left: 60px;
   padding: 5px;
   border-radius: 4px;
   border: 1px solid #ccc;
 }
 
 
-.suggestions {
+.suggestions-list {
   position: absolute;
-  top: 30px;
-  left: 0;
+  z-index: 1000;
+  background-color: white;
+  border: 1px solid #ddd;
   width: 100%;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
   max-height: 200px;
   overflow-y: auto;
-  z-index: 1;
   list-style-type: none;
   padding: 0;
   margin: 0;
+  cursor: pointer;
 }
+
 
 .suggestions li {
   padding: 10px;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .suggestions li:hover {
   background-color: #f0f0f0;
+  font-size: 1.2em; 
+  color: #007BFF;
 }
 
 
@@ -88,7 +118,6 @@ body{
   position: absolute;
   top: 15%;
   right: 10px;
-  background-color: var(--modal-color);
   padding: 20px;
   border: 1px solid #888;
   width: 250px;
@@ -114,7 +143,7 @@ body{
   margin-top:100px ;
   width: 50px; /* Minimal width when not hovered */
   background-color: #111; /* Dark background for the sidebar */
-  color: #fff; /* White text for better visibility */
+  color: #e3bdbd; /* White text for better visibility */
   padding: 20px 5px; /* Adjust padding to fit minimal width */
   box-sizing: border-box;
   position: fixed; /* Fix the sidebar to the left */
@@ -122,6 +151,7 @@ body{
   bottom: 0;
   overflow-y: auto; /* Allow scrolling within the sidebar if content is long */
   transition: width 1s; /* Smooth transition for width */
+  font: 1em sans-serif;
 }
 
 .sidebar:hover {
@@ -207,7 +237,9 @@ body{
   overflow-x: auto;
   white-space: nowrap;
   padding: 20px;
-  background: #ae3535; 
+  background: #333; 
+ 
+  
 }
 .list-items h2{
   font-size: 1.5rem;
@@ -236,9 +268,8 @@ body{
 .list-items li:hover {
   transform: scale(1.1);
 }
-.hover-details {
+.hoverDetails {
   margin-left: 70%;
-  background: rgba(0, 0, 0, 0.5); 
   padding: 10px;
   border-radius: 8px;
 }
@@ -267,6 +298,34 @@ body{
 }
 
 .logoimg{
-  width: 100px;
-  height: 84px;
+  width: 150px;
+  height: 150px;
+}
+
+.show-details {
+  margin-top: 20px;
+}
+
+.show-details img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.show-details button {
+  margin-bottom: 10px;
+}
+
+.horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+}
+
+.episode-card {
+  flex: 0 0 auto;
+  width: 300px;
+  margin-right: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
 }

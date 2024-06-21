@@ -12,6 +12,7 @@ export default function FetchRequest() {
   const [hoveredItem, setHoveredItem] = useState(null);
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedPodcast, setSelectedPodcast] = useState(null);
 
   useEffect(() => {
     fetch('https://podcast-api.netlify.app')
@@ -67,16 +68,17 @@ export default function FetchRequest() {
             {/* Preview Background and Details */}
             <div className="preview-background" style={{ backgroundImage: hoveredItem ? `url(${hoveredItem.image})` : 'none' }}>
               {hoveredItem && (
-                <div className="hover-details">
+                <div className="hoverDetails">
                   <h4>{hoveredItem.title}</h4>
                   <TruncateText text={hoveredItem.description} maxLength={250} />
                   <p>Seasons: {hoveredItem.seasons}</p>
+                  <p>Episodes: {hoveredItem.episode}</p>
                   <p>{hoveredItem.genres.map(genreId => genreMapping[genreId]).join(', ')}</p>
                   <p>Last Updated: {new Date(hoveredItem.updated).toLocaleDateString()}</p>
                 </div>
               )}
             </div>
-      
+
             {/* Main List of Podcasts */}
             <div className="list-items">
               <h2>{selectedGenre ? `${selectedGenre}` : 'All Shows'}</h2>
