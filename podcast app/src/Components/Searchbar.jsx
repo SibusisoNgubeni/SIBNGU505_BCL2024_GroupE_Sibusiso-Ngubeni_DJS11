@@ -68,7 +68,7 @@ export default function SearchBar({ data, onSearch }) {
       />
       {searchQuery && (
         <button onClick={handleClear} className="clear-button">
-          X {/*insert search icon instead of x*/}
+         
         </button>
       )}
       {showSuggestions && suggestions.length > 0 && (

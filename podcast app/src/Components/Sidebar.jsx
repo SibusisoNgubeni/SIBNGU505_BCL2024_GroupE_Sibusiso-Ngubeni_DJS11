@@ -2,7 +2,7 @@
 import React from 'react';
 import '../index.css';
 
-export default function Sidebar({ genres, onGenreSelect }) {
+export default function Sidebar({ genres, onGenreSelect, onSort }) {
   return (
     <div className='sidebar'>
       <div>
@@ -13,13 +13,12 @@ export default function Sidebar({ genres, onGenreSelect }) {
           <li key={index} onClick={() => onGenreSelect(genre)}>{genre}</li>
         ))}
       </ul>
-      <h2>New Podcasts</h2>
-      <ul>
-        <li>Podcast 1</li>
-        <li>Podcast 2</li>
-        <li>Podcast 3</li>
-        <li>Podcast 4</li>
-      </ul>
+    
+      <div className="sort-options">
+        <button onClick={() => onSort('asc')}>Sort A-Z</button>
+        <button onClick={() => onSort('desc')}>Sort Z-A</button>
+      </div>
+      
     </div>
   );
 }

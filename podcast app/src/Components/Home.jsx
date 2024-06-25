@@ -13,6 +13,7 @@ export default function FetchRequest() {
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedPodcast, setSelectedPodcast] = useState(null);
+  const [sortOrder, setSortOrder] = useState('asc');
 
   useEffect(() => {
     fetch('https://podcast-api.netlify.app')
@@ -46,10 +47,22 @@ export default function FetchRequest() {
     setSearchQuery(query);
   };
 
+  const handleSort = (order) => {
+    setSortOrder(order);
+  };
+
   const filteredData = data.filter(post => {
     const matchesGenre = selectedGenre ? post.genres.some(genreId => genreMapping[genreId] === selectedGenre) : true;
     const matchesSearch = searchQuery ? post.title.toLowerCase().includes(searchQuery.toLowerCase()) : true;
     return matchesGenre && matchesSearch;
+  })
+
+  .sort((a, b) => {
+    if (sortOrder === 'asc') {
+      return a.title.localeCompare(b.title);
+    } else {
+      return b.title.localeCompare(a.title);
+    }
   });
 
   const uniqueGenres = [
@@ -59,7 +72,7 @@ export default function FetchRequest() {
   return (
     <div className="container">
       <Navbar podcasts={data} onSearch={handleSearch} />
-      <Sidebar genres={uniqueGenres} onGenreSelect={handleGenreSelect} />
+      <Sidebar genres={uniqueGenres} onGenreSelect={handleGenreSelect} onSort={handleSort} />
       <div className="main-content">
         {loading && <p className='loading-sts'></p>}
         {error && <p style={{ color: 'red' }}>{error}</p>}
