@@ -4,6 +4,7 @@ import Sidebar from './Sidebar';
 import genreMapping from '../Helpers/GenreMapping';
 import TruncateText from '../Helpers/TruncateText';
 import Navbar from './Navbar';
+import GenreButtons from './genreButtons';
 
 export default function FetchRequest() {
   const [data, setData] = useState([]);
@@ -74,6 +75,10 @@ export default function FetchRequest() {
       <Navbar podcasts={data} onSearch={handleSearch} />
       <Sidebar genres={uniqueGenres} onGenreSelect={handleGenreSelect} onSort={handleSort} />
       <div className="main-content">
+
+      <GenreButtons genres={uniqueGenres} onGenreSelect={handleGenreSelect} />
+
+
         {loading && <p className='loading-sts'></p>}
         {error && <p style={{ color: 'red' }}>{error}</p>}
         {!error && filteredData.length > 0 && (
